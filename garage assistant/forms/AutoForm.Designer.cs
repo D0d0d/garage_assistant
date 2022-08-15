@@ -46,6 +46,7 @@
             this.TBoxMileage.Name = "TBoxMileage";
             this.TBoxMileage.Size = new System.Drawing.Size(125, 27);
             this.TBoxMileage.TabIndex = 28;
+            this.TBoxMileage.TextChanged += new System.EventHandler(this.TextChanged);
             // 
             // TBoxVIN
             // 
@@ -53,6 +54,7 @@
             this.TBoxVIN.Name = "TBoxVIN";
             this.TBoxVIN.Size = new System.Drawing.Size(125, 27);
             this.TBoxVIN.TabIndex = 27;
+            this.TBoxVIN.TextChanged += new System.EventHandler(this.TextChanged);
             // 
             // LabelMileage
             // 
@@ -78,6 +80,7 @@
             this.TBoxGN.Name = "TBoxGN";
             this.TBoxGN.Size = new System.Drawing.Size(125, 27);
             this.TBoxGN.TabIndex = 26;
+            this.TBoxGN.TextChanged += new System.EventHandler(this.TextChanged);
             // 
             // LabelGovNum
             // 
@@ -103,6 +106,7 @@
             this.TBoxRC.Name = "TBoxRC";
             this.TBoxRC.Size = new System.Drawing.Size(125, 27);
             this.TBoxRC.TabIndex = 25;
+            this.TBoxRC.TextChanged += new System.EventHandler(this.TextChanged);
             // 
             // Save
             // 
@@ -146,6 +150,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AutoForm";
             this.Text = "AutoForm";
+            this.Load += new System.EventHandler(this.AutoForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

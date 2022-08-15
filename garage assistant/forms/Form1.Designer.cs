@@ -33,19 +33,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dataGridWorks = new System.Windows.Forms.DataGridView();
             this.workBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.workBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.ButtonAddWork = new System.Windows.Forms.Button();
-            this.ButtonEditWork = new System.Windows.Forms.Button();
             this.ButtonDeleteWork = new System.Windows.Forms.Button();
             this.dataGridDetails = new System.Windows.Forms.DataGridView();
             this.panelWorksButtons = new System.Windows.Forms.Panel();
             this.ClearWorks = new System.Windows.Forms.Button();
             this.panelDetailsButtons = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.ButtonAddDetail = new System.Windows.Forms.Button();
-            this.ButtonEditDetail = new System.Windows.Forms.Button();
+            this.ClearDetails = new System.Windows.Forms.Button();
             this.ButtonDeleteDetail = new System.Windows.Forms.Button();
             this.panelWorks = new System.Windows.Forms.Panel();
             this.LabelWorksSumm = new System.Windows.Forms.Label();
@@ -63,17 +60,19 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolBarFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolBarFile_Save = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolBarFile_Open = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolBarSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolBarSettings_Autocomplete = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolBarSettings_Workers = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolBarSettings_Cleaning = new System.Windows.Forms.ToolStripMenuItem();
+            this.работникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DocsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.CBoxWorker = new System.Windows.Forms.ComboBox();
             this.workersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CarButton = new System.Windows.Forms.Button();
             this.CarInfoLabel = new System.Windows.Forms.Label();
-            this.TestLabel = new System.Windows.Forms.Label();
+            this.CBoxWorker = new garage_assistant.ComboBoxWithDisabling();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridWorks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.workBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.workBindingSource1)).BeginInit();
@@ -123,44 +122,20 @@
             this.dataGridWorks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridWorks.Size = new System.Drawing.Size(1092, 484);
             this.dataGridWorks.TabIndex = 0;
-            this.dataGridWorks.Tag = "Works";
-            this.dataGridWorks.SelectionChanged += new System.EventHandler(this.dataGridWorks_SelectionChanged);
-            // 
-            // ButtonAddWork
-            // 
-            this.ButtonAddWork.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonAddWork.Location = new System.Drawing.Point(3, 3);
-            this.ButtonAddWork.Name = "ButtonAddWork";
-            this.ButtonAddWork.Size = new System.Drawing.Size(92, 36);
-            this.ButtonAddWork.TabIndex = 1;
-            this.ButtonAddWork.Tag = "Works";
-            this.ButtonAddWork.Text = "Добавить";
-            this.ButtonAddWork.UseVisualStyleBackColor = true;
-            this.ButtonAddWork.Click += new System.EventHandler(this.ButtonAdd_Click);
-            // 
-            // ButtonEditWork
-            // 
-            this.ButtonEditWork.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonEditWork.Location = new System.Drawing.Point(3, 45);
-            this.ButtonEditWork.Name = "ButtonEditWork";
-            this.ButtonEditWork.Size = new System.Drawing.Size(92, 36);
-            this.ButtonEditWork.TabIndex = 2;
-            this.ButtonEditWork.Tag = "Works";
-            this.ButtonEditWork.Text = "Изменить";
-            this.ButtonEditWork.UseVisualStyleBackColor = true;
-            this.ButtonEditWork.Click += new System.EventHandler(this.ButtonEdit_Click);
+            this.dataGridWorks.Tag = "работы";
+            this.dataGridWorks.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellLeave);
+            this.dataGridWorks.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
             // 
             // ButtonDeleteWork
             // 
             this.ButtonDeleteWork.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonDeleteWork.Location = new System.Drawing.Point(3, 87);
+            this.ButtonDeleteWork.Location = new System.Drawing.Point(3, 3);
             this.ButtonDeleteWork.Name = "ButtonDeleteWork";
             this.ButtonDeleteWork.Size = new System.Drawing.Size(92, 36);
             this.ButtonDeleteWork.TabIndex = 3;
             this.ButtonDeleteWork.Tag = "Works";
             this.ButtonDeleteWork.Text = "Удалить";
             this.ButtonDeleteWork.UseVisualStyleBackColor = true;
-            this.ButtonDeleteWork.Click += new System.EventHandler(this.ButtonDelete_Click);
             // 
             // dataGridDetails
             // 
@@ -187,92 +162,62 @@
             this.dataGridDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridDetails.Size = new System.Drawing.Size(1092, 484);
             this.dataGridDetails.TabIndex = 4;
-            this.dataGridDetails.Tag = "Details";
-            this.dataGridDetails.SelectionChanged += new System.EventHandler(this.dataGridDetails_SelectionChanged);
+            this.dataGridDetails.Tag = "детали";
+            this.dataGridDetails.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellLeave);
+            this.dataGridDetails.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
             // 
             // panelWorksButtons
             // 
             this.panelWorksButtons.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelWorksButtons.Controls.Add(this.ClearWorks);
-            this.panelWorksButtons.Controls.Add(this.ButtonAddWork);
-            this.panelWorksButtons.Controls.Add(this.ButtonEditWork);
             this.panelWorksButtons.Controls.Add(this.ButtonDeleteWork);
-            this.panelWorksButtons.Location = new System.Drawing.Point(1101, 3);
+            this.panelWorksButtons.Location = new System.Drawing.Point(1101, 6);
             this.panelWorksButtons.Name = "panelWorksButtons";
-            this.panelWorksButtons.Size = new System.Drawing.Size(99, 174);
+            this.panelWorksButtons.Size = new System.Drawing.Size(99, 88);
             this.panelWorksButtons.TabIndex = 5;
             // 
             // ClearWorks
             // 
             this.ClearWorks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ClearWorks.Location = new System.Drawing.Point(3, 129);
+            this.ClearWorks.Location = new System.Drawing.Point(3, 45);
             this.ClearWorks.Name = "ClearWorks";
             this.ClearWorks.Size = new System.Drawing.Size(92, 36);
             this.ClearWorks.TabIndex = 4;
             this.ClearWorks.Tag = "Works";
             this.ClearWorks.Text = "Очистить";
             this.ClearWorks.UseVisualStyleBackColor = true;
-            this.ClearWorks.Click += new System.EventHandler(this.ClearWorks_Click);
             // 
             // panelDetailsButtons
             // 
             this.panelDetailsButtons.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelDetailsButtons.Controls.Add(this.button1);
-            this.panelDetailsButtons.Controls.Add(this.ButtonAddDetail);
-            this.panelDetailsButtons.Controls.Add(this.ButtonEditDetail);
+            this.panelDetailsButtons.Controls.Add(this.ClearDetails);
             this.panelDetailsButtons.Controls.Add(this.ButtonDeleteDetail);
-            this.panelDetailsButtons.Location = new System.Drawing.Point(1101, 3);
+            this.panelDetailsButtons.Location = new System.Drawing.Point(1101, 6);
             this.panelDetailsButtons.Name = "panelDetailsButtons";
-            this.panelDetailsButtons.Size = new System.Drawing.Size(99, 174);
+            this.panelDetailsButtons.Size = new System.Drawing.Size(99, 88);
             this.panelDetailsButtons.TabIndex = 6;
             // 
-            // button1
+            // ClearDetails
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(3, 129);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 36);
-            this.button1.TabIndex = 6;
-            this.button1.Tag = "Works";
-            this.button1.Text = "Очистить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.ClearDetails_Click);
-            // 
-            // ButtonAddDetail
-            // 
-            this.ButtonAddDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonAddDetail.Location = new System.Drawing.Point(3, 3);
-            this.ButtonAddDetail.Name = "ButtonAddDetail";
-            this.ButtonAddDetail.Size = new System.Drawing.Size(92, 36);
-            this.ButtonAddDetail.TabIndex = 1;
-            this.ButtonAddDetail.Tag = "Details";
-            this.ButtonAddDetail.Text = "Добавить";
-            this.ButtonAddDetail.UseVisualStyleBackColor = true;
-            this.ButtonAddDetail.Click += new System.EventHandler(this.ButtonAddDetail_Click);
-            // 
-            // ButtonEditDetail
-            // 
-            this.ButtonEditDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonEditDetail.Location = new System.Drawing.Point(3, 45);
-            this.ButtonEditDetail.Name = "ButtonEditDetail";
-            this.ButtonEditDetail.Size = new System.Drawing.Size(92, 36);
-            this.ButtonEditDetail.TabIndex = 2;
-            this.ButtonEditDetail.Tag = "Details";
-            this.ButtonEditDetail.Text = "Изменить";
-            this.ButtonEditDetail.UseVisualStyleBackColor = true;
-            this.ButtonEditDetail.Click += new System.EventHandler(this.ButtonEditDetail_Click);
+            this.ClearDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ClearDetails.Location = new System.Drawing.Point(3, 45);
+            this.ClearDetails.Name = "ClearDetails";
+            this.ClearDetails.Size = new System.Drawing.Size(92, 36);
+            this.ClearDetails.TabIndex = 6;
+            this.ClearDetails.Tag = "Works";
+            this.ClearDetails.Text = "Очистить";
+            this.ClearDetails.UseVisualStyleBackColor = true;
             // 
             // ButtonDeleteDetail
             // 
             this.ButtonDeleteDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonDeleteDetail.Location = new System.Drawing.Point(3, 87);
+            this.ButtonDeleteDetail.Location = new System.Drawing.Point(3, 3);
             this.ButtonDeleteDetail.Name = "ButtonDeleteDetail";
             this.ButtonDeleteDetail.Size = new System.Drawing.Size(92, 36);
             this.ButtonDeleteDetail.TabIndex = 3;
             this.ButtonDeleteDetail.Tag = "Details";
             this.ButtonDeleteDetail.Text = "Удалить";
             this.ButtonDeleteDetail.UseVisualStyleBackColor = true;
-            this.ButtonDeleteDetail.Click += new System.EventHandler(this.ButtonDeleteDetail_Click);
             // 
             // panelWorks
             // 
@@ -296,7 +241,6 @@
             this.LabelWorksSumm.Size = new System.Drawing.Size(151, 20);
             this.LabelWorksSumm.TabIndex = 6;
             this.LabelWorksSumm.Text = "Итого работы:_______";
-            this.LabelWorksSumm.TextChanged += new System.EventHandler(this.LabelSumm_TextChanged);
             // 
             // panelDetails
             // 
@@ -318,7 +262,6 @@
             this.LabelDetailsSumm.Size = new System.Drawing.Size(146, 20);
             this.LabelDetailsSumm.TabIndex = 10;
             this.LabelDetailsSumm.Text = "Итого детали:_______";
-            this.LabelDetailsSumm.TextChanged += new System.EventHandler(this.LabelSumm_TextChanged);
             // 
             // Apply
             // 
@@ -433,47 +376,72 @@
             // ToolBarFile
             // 
             this.ToolBarFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newToolStripMenuItem,
             this.ToolBarFile_Save,
             this.ToolBarFile_Open});
             this.ToolBarFile.Name = "ToolBarFile";
             this.ToolBarFile.Size = new System.Drawing.Size(59, 24);
             this.ToolBarFile.Text = "Файл";
             // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(166, 26);
+            this.newToolStripMenuItem.Text = "Новый";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
+            // 
             // ToolBarFile_Save
             // 
             this.ToolBarFile_Save.Name = "ToolBarFile_Save";
-            this.ToolBarFile_Save.Size = new System.Drawing.Size(224, 26);
+            this.ToolBarFile_Save.Size = new System.Drawing.Size(166, 26);
             this.ToolBarFile_Save.Text = "Сохранить";
             this.ToolBarFile_Save.Click += new System.EventHandler(this.ToolBarFile_Save_Click);
             // 
             // ToolBarFile_Open
             // 
             this.ToolBarFile_Open.Name = "ToolBarFile_Open";
-            this.ToolBarFile_Open.Size = new System.Drawing.Size(224, 26);
+            this.ToolBarFile_Open.Size = new System.Drawing.Size(166, 26);
             this.ToolBarFile_Open.Text = "Открыть";
             this.ToolBarFile_Open.Click += new System.EventHandler(this.ToolBarFile_Open_Click);
             // 
             // ToolBarSettings
             // 
             this.ToolBarSettings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolBarSettings_Autocomplete,
-            this.ToolBarSettings_Workers});
+            this.ToolBarSettings_Workers,
+            this.ToolBarSettings_Cleaning});
             this.ToolBarSettings.Name = "ToolBarSettings";
             this.ToolBarSettings.Size = new System.Drawing.Size(98, 24);
             this.ToolBarSettings.Text = "Настройки";
             // 
-            // ToolBarSettings_Autocomplete
-            // 
-            this.ToolBarSettings_Autocomplete.Name = "ToolBarSettings_Autocomplete";
-            this.ToolBarSettings_Autocomplete.Size = new System.Drawing.Size(209, 26);
-            this.ToolBarSettings_Autocomplete.Text = "Автозаполнение";
-            // 
             // ToolBarSettings_Workers
             // 
             this.ToolBarSettings_Workers.Name = "ToolBarSettings_Workers";
-            this.ToolBarSettings_Workers.Size = new System.Drawing.Size(209, 26);
+            this.ToolBarSettings_Workers.Size = new System.Drawing.Size(166, 26);
             this.ToolBarSettings_Workers.Text = "Работники";
             this.ToolBarSettings_Workers.Click += new System.EventHandler(this.WorkersToolStripMenuItem_Click);
+            // 
+            // ToolBarSettings_Cleaning
+            // 
+            this.ToolBarSettings_Cleaning.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.работникиToolStripMenuItem,
+            this.DocsToolStripMenuItem});
+            this.ToolBarSettings_Cleaning.Name = "ToolBarSettings_Cleaning";
+            this.ToolBarSettings_Cleaning.Size = new System.Drawing.Size(166, 26);
+            this.ToolBarSettings_Cleaning.Text = "Чистка";
+            // 
+            // работникиToolStripMenuItem
+            // 
+            this.работникиToolStripMenuItem.Name = "работникиToolStripMenuItem";
+            this.работникиToolStripMenuItem.Size = new System.Drawing.Size(170, 26);
+            this.работникиToolStripMenuItem.Text = "Работники";
+            this.работникиToolStripMenuItem.Click += new System.EventHandler(this.workersToolStripMenuItem_Click);
+            // 
+            // DocsToolStripMenuItem
+            // 
+            this.DocsToolStripMenuItem.Name = "DocsToolStripMenuItem";
+            this.DocsToolStripMenuItem.Size = new System.Drawing.Size(170, 26);
+            this.DocsToolStripMenuItem.Text = "Документы";
+            this.DocsToolStripMenuItem.Click += new System.EventHandler(this.DocsToolStripMenuItem_Click);
             // 
             // panel2
             // 
@@ -485,20 +453,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(280, 71);
             this.panel2.TabIndex = 21;
-            // 
-            // CBoxWorker
-            // 
-            this.CBoxWorker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CBoxWorker.DataSource = this.workersBindingSource;
-            this.CBoxWorker.DisplayMember = "ShortName";
-            this.CBoxWorker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBoxWorker.FormattingEnabled = true;
-            this.CBoxWorker.Location = new System.Drawing.Point(812, 73);
-            this.CBoxWorker.Name = "CBoxWorker";
-            this.CBoxWorker.Size = new System.Drawing.Size(183, 28);
-            this.CBoxWorker.TabIndex = 24;
-            this.CBoxWorker.DropDown += new System.EventHandler(this.CBoxWorker_DropDown);
-            this.CBoxWorker.SelectedIndexChanged += new System.EventHandler(this.CBoxWorker_SelectedIndexChanged);
             // 
             // workersBindingSource
             // 
@@ -527,24 +481,25 @@
             this.CarInfoLabel.TabIndex = 26;
             this.CarInfoLabel.Text = "Auto Info";
             // 
-            // TestLabel
+            // CBoxWorker
             // 
-            this.TestLabel.AutoSize = true;
-            this.TestLabel.Location = new System.Drawing.Point(465, 52);
-            this.TestLabel.Name = "TestLabel";
-            this.TestLabel.Size = new System.Drawing.Size(41, 20);
-            this.TestLabel.TabIndex = 27;
-            this.TestLabel.Text = "TEST";
+            this.CBoxWorker.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CBoxWorker.FormattingEnabled = true;
+            this.CBoxWorker.Location = new System.Drawing.Point(812, 73);
+            this.CBoxWorker.Name = "CBoxWorker";
+            this.CBoxWorker.PreviousSelectedIndex = 0;
+            this.CBoxWorker.Size = new System.Drawing.Size(183, 28);
+            this.CBoxWorker.TabIndex = 28;
+            this.CBoxWorker.DropDown += new System.EventHandler(this.CBoxWorker_DropDown);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1245, 710);
-            this.Controls.Add(this.TestLabel);
+            this.Controls.Add(this.CBoxWorker);
             this.Controls.Add(this.CarInfoLabel);
             this.Controls.Add(this.CarButton);
-            this.Controls.Add(this.CBoxWorker);
             this.Controls.Add(this.dTPicker);
             this.Controls.Add(this.LabelDate);
             this.Controls.Add(this.LabelNumber);
@@ -553,6 +508,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.Apply);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Garage Assistant";
@@ -580,8 +536,6 @@
         }
 
         #endregion
-        private Button ButtonAddWork;
-        private Button ButtonEditWork;
         private Button ButtonDeleteWork;
         private BindingSource workBindingSource;
         public DataGridView dataGridWorks;
@@ -589,14 +543,12 @@
         public DataGridView dataGridDetails;
         private Panel panelWorksButtons;
         private Panel panelDetailsButtons;
-        private Button ButtonAddDetail;
-        private Button ButtonEditDetail;
         private Button ButtonDeleteDetail;
         private Panel panelWorks;
         private Panel panelDetails;
         private Button Apply;
         private Button ClearWorks;
-        private Button button1;
+        private Button ClearDetails;
         private Label LabelWorksSumm;
         private Label LabelDetailsSumm;
         private Label LabelTotalSumm;
@@ -614,13 +566,15 @@
         private Panel panel2;
         private ToolStripMenuItem ToolBarFile_Open;
         private ToolStripMenuItem ToolBarSettings;
-        private ToolStripMenuItem ToolBarSettings_Autocomplete;
+        private ToolStripMenuItem ToolBarSettings_Cleaning;
         private ToolStripMenuItem ToolBarSettings_Workers;
-        private ComboBox CBoxWorker;
         private Button CarButton;
         private Label CarInfoLabel;
         private BindingSource workersBindingSource;
         private CheckedListBox checkedListBox1;
-        private Label TestLabel;
+        private ComboBoxWithDisabling CBoxWorker;
+        private ToolStripMenuItem работникиToolStripMenuItem;
+        private ToolStripMenuItem DocsToolStripMenuItem;
+        private ToolStripMenuItem newToolStripMenuItem;
     }
 }

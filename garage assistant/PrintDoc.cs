@@ -9,7 +9,6 @@ namespace garage_assistant
 
     internal class PrintDoc
     {
-		public string numb;
         public string 
             style= @"
 <style>
@@ -211,15 +210,13 @@ td:nth-child(6) {
 			body= "";
 		public List<string> tableW, tableD;
 
-		public Workers Worker;
-		public CarInfo carInfo;
+		public Docs Doc;
 		public OrgInfo orgInfo= new OrgInfo
         {
 			name= "Общество с ограниченной ответственносстью \"Тандем БЛАБЛА\"",
 			adress = "г.Феодосия", phone="+7978XXXXXXX", numeral="123123123123" 
 		};
-		public Summs summs;
-		DateTime date;
+
         private StreamWriter streamwriter;
         public string path;
 		public void AddRowWorks(int id, Work buf)
@@ -251,7 +248,7 @@ td:nth-child(6) {
         {
 			string res = $@"		
 			<div class=tables-body>
-			<p class=main-title><b> Заказ-наряд №{numb} от {date.ToShortDateString()}</b></p>			
+			<p class=main-title><b> Заказ-наряд №{Doc.Id} от {Doc.date.ToShortDateString()}</b></p>			
 				<div>
 				<p class=sub-table-caption>
 					<i>Работы</i> 
@@ -275,7 +272,7 @@ td:nth-child(6) {
 						<tr>
 							<td class=empty-col></td><td class=empty-col></td>
 							<td  colspan=""3""><b>Итого работы</b></td>
-							<td class=table-col-summ>{summs.SummW}</td>
+							<td class=table-col-summ>{Doc.TotalWorks}</td>
 						</tr>
 					</tfoot>
 				</table>
@@ -303,7 +300,7 @@ td:nth-child(6) {
 						<tr>
 							<td class=empty-col></td><td class=empty-col></td>
 							<td  colspan=""3""><b>Итого детали</b></td>
-							<td class=table-col-summ>{summs.SummD}</td>
+							<td class=table-col-summ>{Doc.TotalDetails}</td>
 						</tr>
 					</tfoot>
 				</table>
@@ -321,7 +318,7 @@ td:nth-child(6) {
 						<tr class=total-sum-row>
 							<td class=empty-col></td><td class=empty-col></td>
 							<td class=total-sum-left colspan=""3""><b>Всего:</b></td>
-							<td class=total-sum-right>{summs.SummT}</td>
+							<td class=total-sum-right>{Doc.Total}</td>
 						</tr>
 					</tbody>
 				</table>
@@ -333,7 +330,7 @@ td:nth-child(6) {
         {
 			body += $@"
 					<div class = page>
-					<h2 class=fio>{Worker.FullName}</h2>
+					<h2 class=fio>{Doc.Worker.FullName}</h2>
 					<div>
 						<p class=adress>{orgInfo.adress}</p>
 					
@@ -347,10 +344,10 @@ td:nth-child(6) {
 					   <div class=description>
 						<div class=org-name><p><b>{orgInfo.name}</b></p></div>
 						<div class=car-info> 
-							<p><b> {carInfo.rc}&nbsp;</b></p>
-							<p><b> {carInfo.GovNumb}&nbsp;</b></p>
-							<p> {carInfo.VIN}&nbsp;</p>
-							<p> {carInfo.Mileage}&nbsp;</p>
+							<p><b> {Doc.CrInfo.rc}&nbsp;</b></p>
+							<p><b> {Doc.CrInfo.GovNumb}&nbsp;</b></p>
+							<p> {Doc.CrInfo.VIN}&nbsp;</p>
+							<p> {Doc.CrInfo.Mileage}&nbsp;</p>
 						</div>
 						<div class=car-info-labels> 
 							<p><i>rc</i></p> 
@@ -366,7 +363,7 @@ td:nth-child(6) {
 						<div class=signatures>
 							<div class=client-sign>Подпись клиента________________/________________/</div>
 			
-							<div class=worker-sign>Подпись исполнителя________________/{Worker.ShortName}</div>
+							<div class=worker-sign>Подпись исполнителя________________/{Doc.Worker.ShortName}</div>
 						</div>
 					</div>
 				</div>
@@ -379,7 +376,7 @@ td:nth-child(6) {
 			<head>
 			<meta charset = ""utf - 8"" >
    
-			   <title> Заказ наряд № {numb}</title>
+			   <title> Заказ наряд № {Doc.Id}</title>
 			{style}
 			</head >
 			<body>{body}<body>
@@ -397,12 +394,7 @@ td:nth-child(6) {
 		}
         public void CompleteDoc(Docs Doc)
         {
-			this.numb = Doc.Id.ToString();
-			this.summs = Doc.Summs;
-			this.carInfo = Doc.CrInfo;
-			this.orgInfo = Doc.OrgInfo;
-			this.Worker = Doc.Worker;
-			this.date = Doc.date;
+			this.Doc = Doc;
 
 			for (int i=0;i<= (tableW.Count + tableD.Count) / 20; i++)
             {
@@ -422,7 +414,7 @@ td:nth-child(6) {
 				this.AddPage(i+1, ws, ds);
 
 			}
-			path = $@".\Заказ_наряд#{numb}.html";
+			path = $@".\Заказ_наряд#{Doc.Id}.html";
 			streamwriter = new StreamWriter(path);
 			streamwriter.Write(this.MakeHTML());
 			streamwriter.Close();

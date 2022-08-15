@@ -14,23 +14,49 @@ namespace garage_assistant
 
         public CarInfo CrInfo;
 
-        public Summs Summs;
+        public double TotalDetails
+        {
+            get
+            {
 
-        public OrgInfo OrgInfo;
-        public ICollection<Work> Works { get; set; }
+                if (this.Details != null)
+                {
+                    return (double)(this.Details.Select(u => u.Summ).Sum());
+                }
+                else
+                {
+                    return 0;
+                };
 
+            }
+        }
+        public double TotalWorks
+        {
+            get
+            {
+                if (this.Works != null)
+                {
+                    return (double)(this.Works.Select(u => u.Summ).Sum());
+                }
+                else
+                {
+                    return 0;
+                };
 
-        public ICollection<Details> Details { get; set; }
-
-
+            }
+        }
+        public double Total { get { return this.TotalWorks+this.TotalDetails; } }
+        public List<Work> Works { get; set; }
+        public List<Details> Details { get; set; }
 
         public DateTime date { get; set; }
-        public int? WorkersId { get; set; }
+        public int WorkersId { get; set; }
         public Workers Worker { get; set; }
         public Docs()
         {
             Works = new List<Work>();
             Details = new List<Details>();
+
         }
 
     }

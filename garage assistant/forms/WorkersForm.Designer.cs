@@ -166,6 +166,8 @@
             this.LBWorkers.Name = "LBWorkers";
             this.LBWorkers.Size = new System.Drawing.Size(365, 424);
             this.LBWorkers.TabIndex = 16;
+            this.LBWorkers.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.LBWorkers_DrawItem);
+            this.LBWorkers.SelectedIndexChanged += new System.EventHandler(this.LBWorkers_SelectedIndexChanged);
             // 
             // WorkersForm
             // 

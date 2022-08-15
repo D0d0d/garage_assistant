@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace garage_assistant
 {
+
     public class ApplicationContext : DbContext
     {
         public DbSet<Work> Works { get; set; }
@@ -22,7 +23,9 @@ namespace garage_assistant
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            
             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=garassistdb;Trusted_Connection=True;");
         }
+
     }
 }

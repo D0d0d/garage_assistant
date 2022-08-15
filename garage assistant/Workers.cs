@@ -31,10 +31,9 @@ namespace garage_assistant
 
         public bool IsActive { get; set; }
 
-        public ICollection<Docs> Docs { get; set; }
+        public List<Docs> Docs { get;} = new List<Docs>();
         public Workers()
         {
-            Docs = new List<Docs>();
         }
     }
 }

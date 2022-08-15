@@ -9,6 +9,10 @@ namespace garage_assistant
     public struct CarInfo
     {
         public string rc, GovNumb, VIN, Mileage;
+        public string String { 
+            get { 
+                return rc + " " + GovNumb + " " + VIN + " " + Mileage;
+            } }
 
     }
     public struct OrgInfo
