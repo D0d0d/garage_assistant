@@ -325,7 +325,7 @@ namespace garage_assistant
         {
             this.Doc = new Docs();
         }
-        private void CBoxWorker_DropDown(object sender, EventArgs e)            // TODO
+        private void CBoxWorker_DropDown(object sender, EventArgs e)
         {
             var item = this.CBoxWorker.SelectedItem;
             this.db.Workers.Load();

@@ -53,10 +53,6 @@ namespace garage_assistant
                 g.FillRectangle(brush, e.Bounds);
                 // Draw the text    
                 e.Graphics.DrawString(text, e.Font, tbrush, e.Bounds, StringFormat.GenericDefault);
-
-                //e.Graphics.DrawString(this.Items[e.Index].ToString(), e.Font, tBrush, e.Bounds, StringFormat.GenericDefault);
-
-                //TextRenderer.DrawText(text, this.Font, brush, e.Bounds, StringFormat.GenericDefault);
                 brush.Dispose();
                 tbrush.Dispose();
                 base.OnDrawItem(e);

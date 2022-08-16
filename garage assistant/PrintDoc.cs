@@ -9,7 +9,7 @@ namespace garage_assistant
 
     internal class PrintDoc
     {
-        public string 
+        public string // html blank parts
             style= @"
 <style>
 		
@@ -208,17 +208,17 @@ td:nth-child(6) {
 }
 		   </style>", 
 			body= "";
-		public List<string> tableW, tableD;
+		public List<string> tableW, tableD; // variable for storing tables in html style
 
 		public Docs Doc;
-		public OrgInfo orgInfo= new OrgInfo
+		public OrgInfo orgInfo= new OrgInfo       // organization info
         {
 			name= "Общество с ограниченной ответственносстью \"Тандем БЛАБЛА\"",
 			adress = "г.Феодосия", phone="+7978XXXXXXX", numeral="123123123123" 
 		};
 
         private StreamWriter streamwriter;
-        public string path;
+		public string path;
 		public void AddRowWorks(int id, Work buf)
         {
 			tableW.Add( $@"
