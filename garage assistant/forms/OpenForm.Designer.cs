@@ -74,7 +74,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "OpenForm";
             this.Text = "OpenForm";
-            this.Load += new System.EventHandler(this.OpenForm_Load);
             this.ResumeLayout(false);
 
         }
