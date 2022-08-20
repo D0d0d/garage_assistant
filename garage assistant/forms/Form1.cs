@@ -325,6 +325,34 @@ namespace garage_assistant
         {
             this.Doc = new Docs();
         }
+<<<<<<< HEAD
+
+
+        private void организацияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OrgForm orgForm = new OrgForm(this.db.orgInfo());
+            DialogResult result = orgForm.ShowDialog(this);
+            if (result == DialogResult.Cancel)
+                return;
+
+            this.db.orgInfo(orgForm.orgInfo);
+            this.db.SaveChanges();
+        }
+
+        private void базаДанныхToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string text = Microsoft.VisualBasic.Interaction.InputBox("Вы действительно хотите удалить базу данных? Это сотрет все записи! Введите 'Я действительно хочу удалить базу данных'", "Удаление базы данных", "");
+            if (text == "Я действительно хочу удалить базу данных")
+            {
+                db.Database.EnsureDeleted();
+
+                db = new ApplicationContext();
+                db.Database.EnsureCreated();
+            }
+        }
+
+=======
+>>>>>>> parent of 7a79ec7 ()
         private void CBoxWorker_DropDown(object sender, EventArgs e)
         {
             var item = this.CBoxWorker.SelectedItem;

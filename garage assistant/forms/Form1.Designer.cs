@@ -73,6 +73,7 @@
             this.CarButton = new System.Windows.Forms.Button();
             this.CarInfoLabel = new System.Windows.Forms.Label();
             this.CBoxWorker = new garage_assistant.ComboBoxWithDisabling();
+            this.базаДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridWorks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.workBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.workBindingSource1)).BeginInit();
@@ -416,30 +417,49 @@
             // ToolBarSettings_Workers
             // 
             this.ToolBarSettings_Workers.Name = "ToolBarSettings_Workers";
+<<<<<<< HEAD
+            this.ToolBarSettings_Workers.Size = new System.Drawing.Size(224, 26);
+            this.ToolBarSettings_Workers.Text = "Работники";
+            this.ToolBarSettings_Workers.Click += new System.EventHandler(this.WorkersToolStripMenuItem_Click);
+            // 
+            // организацияToolStripMenuItem
+            // 
+            this.организацияToolStripMenuItem.Name = "организацияToolStripMenuItem";
+            this.организацияToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.организацияToolStripMenuItem.Text = "Организация";
+            this.организацияToolStripMenuItem.Click += new System.EventHandler(this.организацияToolStripMenuItem_Click);
+            // 
+=======
             this.ToolBarSettings_Workers.Size = new System.Drawing.Size(166, 26);
             this.ToolBarSettings_Workers.Text = "Работники";
             this.ToolBarSettings_Workers.Click += new System.EventHandler(this.WorkersToolStripMenuItem_Click);
             // 
+>>>>>>> parent of 7a79ec7 ()
             // ToolBarSettings_Cleaning
             // 
             this.ToolBarSettings_Cleaning.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.работникиToolStripMenuItem,
-            this.DocsToolStripMenuItem});
+            this.DocsToolStripMenuItem,
+            this.базаДанныхToolStripMenuItem});
             this.ToolBarSettings_Cleaning.Name = "ToolBarSettings_Cleaning";
+<<<<<<< HEAD
+            this.ToolBarSettings_Cleaning.Size = new System.Drawing.Size(224, 26);
+=======
             this.ToolBarSettings_Cleaning.Size = new System.Drawing.Size(166, 26);
+>>>>>>> parent of 7a79ec7 ()
             this.ToolBarSettings_Cleaning.Text = "Чистка";
             // 
             // работникиToolStripMenuItem
             // 
             this.работникиToolStripMenuItem.Name = "работникиToolStripMenuItem";
-            this.работникиToolStripMenuItem.Size = new System.Drawing.Size(170, 26);
+            this.работникиToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.работникиToolStripMenuItem.Text = "Работники";
             this.работникиToolStripMenuItem.Click += new System.EventHandler(this.workersToolStripMenuItem_Click);
             // 
             // DocsToolStripMenuItem
             // 
             this.DocsToolStripMenuItem.Name = "DocsToolStripMenuItem";
-            this.DocsToolStripMenuItem.Size = new System.Drawing.Size(170, 26);
+            this.DocsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.DocsToolStripMenuItem.Text = "Документы";
             this.DocsToolStripMenuItem.Click += new System.EventHandler(this.DocsToolStripMenuItem_Click);
             // 
@@ -491,6 +511,13 @@
             this.CBoxWorker.Size = new System.Drawing.Size(183, 28);
             this.CBoxWorker.TabIndex = 28;
             this.CBoxWorker.DropDown += new System.EventHandler(this.CBoxWorker_DropDown);
+            // 
+            // базаДанныхToolStripMenuItem
+            // 
+            this.базаДанныхToolStripMenuItem.Name = "базаДанныхToolStripMenuItem";
+            this.базаДанныхToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.базаДанныхToolStripMenuItem.Text = "База Данных";
+            this.базаДанныхToolStripMenuItem.Click += new System.EventHandler(this.базаДанныхToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -576,5 +603,10 @@
         private ToolStripMenuItem работникиToolStripMenuItem;
         private ToolStripMenuItem DocsToolStripMenuItem;
         private ToolStripMenuItem newToolStripMenuItem;
+<<<<<<< HEAD
+        private ToolStripMenuItem организацияToolStripMenuItem;
+        private ToolStripMenuItem базаДанныхToolStripMenuItem;
+=======
+>>>>>>> parent of 7a79ec7 ()
     }
 }

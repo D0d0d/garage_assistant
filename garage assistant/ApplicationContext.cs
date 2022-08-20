@@ -26,6 +26,5 @@ namespace garage_assistant
             
             optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=garassistdb;Trusted_Connection=True;");
         }
-
     }
 }

@@ -147,36 +147,39 @@ namespace garage_assistant
 
         private void LBWorkers_DrawItem(object sender, DrawItemEventArgs e)
         {
-            // Draw the background 
-            e.DrawBackground();
-
-            Graphics g = e.Graphics;
-            // Get the item text
-            Workers item = (Workers)((ListBox)sender).Items[e.Index];
-            string text = item.ShortName;
-
-            Brush tbrush;
-
-            if (item.IsActive == true)
+            if (((ListBox)sender).Items.Count > 0)
             {
-                tbrush = new SolidBrush(Color.Black);
+                // Draw the background 
+                e.DrawBackground();
+
+                Graphics g = e.Graphics;
+                // Get the item text
+                Workers item = (Workers)((ListBox)sender).Items[e.Index];
+                string text = item.ShortName;
+
+                Brush tbrush;
+
+                if (item.IsActive == true)
+                {
+                    tbrush = new SolidBrush(Color.Black);
+                }
+                else
+                {
+                    tbrush = new SolidBrush(Color.DarkGray);
+                }
+                Brush brush = ((e.State & DrawItemState.Selected) == DrawItemState.Selected) ?
+                            new SolidBrush(Color.FromArgb(50, Color.White)) : new SolidBrush(e.BackColor);
+
+                g.FillRectangle(brush, e.Bounds);
+                // Draw the text    
+                e.Graphics.DrawString(text, e.Font, tbrush, e.Bounds, StringFormat.GenericDefault);
+
+                //e.Graphics.DrawString(this.Items[e.Index].ToString(), e.Font, tBrush, e.Bounds, StringFormat.GenericDefault);
+
+                //TextRenderer.DrawText(text, this.Font, brush, e.Bounds, StringFormat.GenericDefault);
+                brush.Dispose();
+                tbrush.Dispose();
             }
-            else
-            {
-                tbrush = new SolidBrush(Color.DarkGray);
-            }
-            Brush brush = ((e.State & DrawItemState.Selected) == DrawItemState.Selected) ?
-                        new SolidBrush(Color.FromArgb(50, Color.White)) : new SolidBrush(e.BackColor);
-
-            g.FillRectangle(brush, e.Bounds);
-            // Draw the text    
-            e.Graphics.DrawString(text, e.Font, tbrush, e.Bounds, StringFormat.GenericDefault);
-
-            //e.Graphics.DrawString(this.Items[e.Index].ToString(), e.Font, tBrush, e.Bounds, StringFormat.GenericDefault);
-
-            //TextRenderer.DrawText(text, this.Font, brush, e.Bounds, StringFormat.GenericDefault);
-            brush.Dispose();
-            tbrush.Dispose();
             
         }
     }
